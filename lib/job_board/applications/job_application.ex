@@ -6,8 +6,8 @@ defmodule JobBoard.Applications.JobApplication do
   @foreign_key_type :binary_id
   schema "job_application" do
     field :cover_letter, :string
-    field :user_id, :binary_id
-    field :job_id, :binary_id
+    belongs_to :user, JobBoard.Accounts.User
+    belongs_to :Job, Jobs.Job
 
     timestamps(type: :utc_datetime)
   end

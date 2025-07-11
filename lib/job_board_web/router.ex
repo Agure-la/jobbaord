@@ -19,7 +19,7 @@ defmodule JobBoardWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/api", JobBoardWeb do
-      pipe_through :[:api, :require_authenticated_user]
+      pipe_through [:api, :require_authenticated_user]
 
       #Auth routes
       post "/users/register", UserRegistrationController, :create
@@ -27,7 +27,7 @@ defmodule JobBoardWeb.Router do
       delete "/users/log_out", UserSessionController, :delete
 
       resources "/jobs", JobController, [:new, :edit]
-      resources "/applications", JobApplicationController, only: [:create, index]
+      resources "/applications", JobApplicationController, only: [:create, :index]
     end
   end
 end

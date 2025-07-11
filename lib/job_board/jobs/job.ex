@@ -9,7 +9,9 @@ defmodule JobBoard.Jobs.Job do
     field :title, :string
     field :location, :string
     field :company, :string
-    field :is_active, :boolean, default: false
+    field :is_active, :boolean, default: true
+
+    has_many :job_applications, JobBoard.Applications.JobApplication
 
     timestamps(type: :utc_datetime)
   end
