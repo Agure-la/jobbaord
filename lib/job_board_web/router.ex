@@ -22,6 +22,12 @@ defmodule JobBoardWeb.Router do
       pipe_through :api
 
       #Auth routes
+      post "/users/register", UserRegistrationController, :create
+      post "/users/login_in", UserSessionController, :create
+      delete "/users/log_out", UserSessionController, :delete
+
+      resources "/jobs", JobController, [:new, :edit]
+      resources "/applications", JobApplicationController, only: [:create, index]
     end
   end
 end
