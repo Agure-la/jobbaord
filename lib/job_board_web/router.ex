@@ -19,7 +19,7 @@ defmodule JobBoardWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/api", JobBoardWeb do
-      pipe_through :api
+      pipe_through :[:api, :require_authenticated_user]
 
       #Auth routes
       post "/users/register", UserRegistrationController, :create
